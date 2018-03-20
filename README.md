@@ -1,3 +1,3 @@
-# Ducatur OracleMarketplace
+# Ducatur Marketplace
 
 Frontend to manage Oracles.
