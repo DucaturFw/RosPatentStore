@@ -56,19 +56,24 @@ choosePort(HOST, DEFAULT_PORT)
       proxyConfig,
       urls.lanUrlForConfig
     );
+
     const devServer = new WebpackDevServer(compiler, serverConfig);
     // Launch WebpackDevServer.
-    devServer.listen(port, HOST, err => {
-      if (err) {
-        return console.log(err);
-      }
-      if (isInteractive) {
-        clearConsole();
-      }
-      console.log(chalk.cyan('Starting the development server...\n'));
-      openBrowser(urls.localUrlForBrowser);
-    });
-
+    try {
+      devServer.listen(port, HOST, err => {
+        if (err) {
+          return console.log(err);
+        }
+        if (isInteractive) {
+          clearConsole();
+        }
+        console.log(chalk.cyan('Starting the development server...\n'));
+        openBrowser(urls.localUrlForBrowser);
+      });
+  
+    } catch(e) {
+      console.log(e);
+    }
 
 
     ['SIGINT', 'SIGTERM'].forEach(function(sig) {
