@@ -3,22 +3,18 @@ import {ThemeProvider} from 'styled-components';
 import theme from './styles/theme';
 import './styles/styles.css';
 
-
 import Header from './components/header';
+import Main from './components/main';
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <div className="App">
+        <div>
           <Header/>
-          <header className="App-header">
-              <h1 className="App-title">Welcome to Ducatur</h1>
-          </header>
+          <Main/>
         </div>
       </ThemeProvider>
     );
   }
 }
-
-export default App;
