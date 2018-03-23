@@ -54,10 +54,12 @@ export default class Footer extends Component {
 }
 
 const Cont = styled.div`
+  flex-shrink: 0;
   width: 100%;
-  height: 200px;
+  height: 220px;
   font-size: 1.4rem;
   background-color: ${props => props.theme.color.background.main};
+  margin-top: 50px;
 `;
 
 const Inner = styled.div`

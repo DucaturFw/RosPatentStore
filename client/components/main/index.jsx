@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import FontAwesome from 'react-fontawesome';
 
 import Wrapper from '../elements/Wrapper';
+import Marketplace from '../marketplace';
 
 export default class Main extends Component {
   render() {
@@ -11,9 +12,10 @@ export default class Main extends Component {
         <Wrapper>
           <Inner>
             <Content>
-              <Title>Welcome to Ducatur</Title>
+              <Title>Oracles Marketplace</Title>
             </Content>
           </Inner>
+          <Marketplace />
         </Wrapper>
       </Cont>
     );
@@ -29,7 +31,7 @@ const Inner = styled.div`
 `;
 
 const Content = styled.div`
-  height: 200px;
+  height: 100px;
   padding-top: 50px;
 `;
 

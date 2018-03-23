@@ -14,3 +14,28 @@ html {
 #root {
     height: 100%;
 }
+
+@-webkit-keyframes oracleCardIn {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(2.4rem);
+      transform: translateY(2.4rem);
+    }
+    to {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+  @keyframes oracleCardIn {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(2.4rem);
+      transform: translateY(2.4rem);
+    }
+    to {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
