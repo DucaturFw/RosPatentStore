@@ -1,9 +1,9 @@
 const Theme = {
-    color:{
-        background: {
-            main: '#EDF7FC'
-        }
+  color: {
+    background: {
+      main: '#EDF7FC'
     }
-}
+  }
+};
 
 export default Theme;

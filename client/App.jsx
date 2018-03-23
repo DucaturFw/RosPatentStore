@@ -5,6 +5,7 @@ import './styles/styles.css';
 
 import Header from './components/header';
 import Main from './components/main';
+import Footer from './components/footer';
 
 export default class App extends Component {
   render() {
@@ -13,6 +14,7 @@ export default class App extends Component {
         <Container>
           <Header />
           <Main />
+          <Footer />
         </Container>
       </ThemeProvider>
     );
@@ -20,6 +22,7 @@ export default class App extends Component {
 }
 
 const Container = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
 `;
