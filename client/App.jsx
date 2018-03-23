@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {ThemeProvider} from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 import './styles/styles.css';
 
@@ -10,11 +10,16 @@ export default class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <div>
-          <Header/>
-          <Main/>
-        </div>
+        <Container>
+          <Header />
+          <Main />
+        </Container>
       </ThemeProvider>
     );
   }
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
