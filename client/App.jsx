@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 import './styles/styles.css';
@@ -13,7 +14,9 @@ export default class App extends Component {
       <ThemeProvider theme={theme}>
         <Container>
           <Header />
-          <Main />
+          <Router>
+            <Main />
+          </Router>
           <Footer />
         </Container>
       </ThemeProvider>
