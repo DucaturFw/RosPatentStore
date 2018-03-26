@@ -4,8 +4,10 @@ import styled, { ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 import './styles/styles.css';
 
+import Main from './components/elements/Main';
 import Header from './components/header';
-import Main from './components/main';
+import Marketplace from './components/marketplace';
+import Oracle from './components/oracle';
 import Footer from './components/footer';
 
 export default class App extends Component {
@@ -15,7 +17,10 @@ export default class App extends Component {
         <Container>
           <Header />
           <Router>
-            <Main />
+            <Main>
+              <Route exact path={'/'} component={Marketplace} />
+              <Route path={'/oracle/:id'} component={Oracle} />
+            </Main>
           </Router>
           <Footer />
         </Container>

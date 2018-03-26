@@ -6,6 +6,9 @@ const Theme = {
     },
     icons: {
       main: '#ddd'
+    },
+    border: {
+      light: '#bbb'
     }
   }
 };

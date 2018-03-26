@@ -20,7 +20,14 @@ export default class Marketplace extends Component {
   }
 
   render() {
-    return <List>{this.items}</List>;
+    return (
+      <div>
+        <Content>
+          <Title>Oracles Marketplace</Title>
+        </Content>
+        <List>{this.items}</List>;
+      </div>
+    );
   }
 }
 
@@ -44,4 +51,14 @@ const Item = styled.div`
 `;
 const Icon = styled(FontAwesome)`
   color: ${props => props.theme.color.icons.main};
+`;
+
+const Content = styled.div`
+  text-align: center;
+  height: 100px;
+  padding-top: 50px;
+`;
+
+const Title = styled.h1`
+  font-size: 4rem;
 `;
