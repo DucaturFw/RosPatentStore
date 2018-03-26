@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import FontAwesome from 'react-fontawesome';
 
@@ -12,8 +13,10 @@ export default class Header extends Component {
         <Wrapper>
           <Inner>
             <Left>
-              <Logo />
-              <Title>Ducatur</Title>
+              <StyleLink to={'/'}>
+                <Logo />
+                <Title>Ducatur</Title>
+              </StyleLink>
             </Left>
             <Right>
               <Signing>Sign in</Signing>
@@ -41,7 +44,8 @@ const Inner = styled.div`
 
 const Title = styled.h3`
   margin-left: 15px;
-  font-weight: 200;
+  margin-top: 14px;
+  font-weight: 400;
 `;
 
 const Left = styled.div`
@@ -54,4 +58,10 @@ const Right = styled.div`
 const Signing = styled.span`
   vertical-align: super;
   margin-right: 10px;
+`;
+
+const StyleLink = styled(Link)`
+  display: flex;
+  text-decoration: none;
+  color: inherit;
 `;

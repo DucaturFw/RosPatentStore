@@ -14,16 +14,16 @@ export default class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <Container>
-          <Header />
-          <Router>
+        <Router>
+          <Container>
+            <Header />
             <Main>
               <Route exact path={'/'} component={Marketplace} />
               <Route path={'/oracle/:id'} component={Oracle} />
             </Main>
-          </Router>
-          <Footer />
-        </Container>
+            <Footer />
+          </Container>
+        </Router>
       </ThemeProvider>
     );
   }
