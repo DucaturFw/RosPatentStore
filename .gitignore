@@ -1,6 +1,2 @@
 node_modules/
-build/static/
-build/asset-manifest.json
-build/index.html
-build/manifest.json
-build/service-worker.js
+build/

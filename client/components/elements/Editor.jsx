@@ -14,9 +14,7 @@ export default class Editor extends Component {
   initMD({ element, initialValue }) {
     this.simplemde = new Simplemde({
       element,
-      initialValue,
-      status: true,
-      toolbar: false
+      initialValue
     });
 
     this.simplemde.codemirror.on('change', () => {
