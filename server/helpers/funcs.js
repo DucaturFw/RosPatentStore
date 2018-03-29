@@ -10,12 +10,8 @@ function catchError(error) {
   console.error(inspect(error, true, 1, true));
 }
 
-function startServer(server) {
-  server.start(error => {
-    if (error) {
-      catchError(error);
-    }
+async function startServer(server) {
+  await server.start();
 
-    console.log(`Sangay server running at: ${server.info.uri}`);
-  });
+  console.log(`Ducatur server running at: ${server.info.uri}`);
 }
