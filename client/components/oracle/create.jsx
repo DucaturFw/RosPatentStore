@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import FontAwesome from 'react-fontawesome';
+import axios from 'axios';
 
 import Editor from '../elements/Editor';
 import Btn from '../elements/btn';
@@ -23,6 +24,9 @@ export default class Oracule extends Component {
     const { title, description } = this.state;
 
     // Do something with results
+    axios.get('/api/hello').then(res => {
+      console.log(res.data);
+    });
   };
 
   render() {
