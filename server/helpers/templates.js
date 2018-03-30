@@ -17,6 +17,6 @@ module.exports = server => {
         }
       }
     },
-    path: path.join(__dirname, '../../public')
+    path: path.join(__dirname, '../../build')
   });
 };

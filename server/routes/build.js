@@ -15,11 +15,8 @@ module.exports = server => {
   server.route({
     method: 'GET',
     path: '/{param*}',
-    handler: {
-      directory: {
-        path: path.resolve(__dirname, '../../build'),
-        listing: true
-      }
+    handler: function (req, h) {
+      return h.view('index');
     }
   });
 };
