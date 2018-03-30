@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import FontAwesome from 'react-fontawesome';
 
 import Logo from '../elements/logo';
 import Wrapper from '../elements/Wrapper';
@@ -106,7 +105,7 @@ const Politics = styled.div`
   margin-top: 20px;
 `;
 
-const StyleLink = styled(Link)`
+const StyleLink = styled(Link) `
   text-decoration: none;
   color: inherit;
 `;

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import FontAwesome from 'react-fontawesome';
 
-import Wrapper from '../elements/Wrapper';
-
 const NUMBER = 32;
 
 export default class Marketplace extends Component {
@@ -49,7 +47,7 @@ const Item = styled.div`
   animation: oracleCardIn 0.25s cubic-bezier(0.06, 0.67, 0.37, 0.99) forwards;
   animation-delay: ${props => (props.delay ? props.delay * 0.05 : 0)}s;
 `;
-const Icon = styled(FontAwesome)`
+const Icon = styled(FontAwesome) `
   color: ${props => props.theme.color.icons.main};
 `;
 
