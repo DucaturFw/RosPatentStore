@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import FontAwesome from 'react-fontawesome';
+import axios from 'axios';
 
 const NUMBER = 32;
 
 export default class Marketplace extends Component {
-  get items() {
-    let arr = new Array(NUMBER).fill(0);
 
-    return arr.map((item, idx) => {
+  state = {
+    oracles: []
+  }
+
+  componentDidMount() {
+    axios.get(`/api/oracle`).then(res => {
+      const { oracles } = res.data;
+
+      this.setState({ oracles });
+    });
+  }
+
+  get items() {
+    return this.state.oracles.map((item, idx) => {
       return (
         <Item key={idx} delay={idx}>
           <Icon name="bitcoin" size="4x" />

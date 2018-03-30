@@ -24,7 +24,9 @@ export default class Oracule extends Component {
     const { title, description } = this.state;
 
     // Do something with results
-    axios.get('/api/hello').then(res => {
+    axios.post('/api/oracle', {
+      title, description
+    }).then(res => {
       console.log(res.data);
     });
   };

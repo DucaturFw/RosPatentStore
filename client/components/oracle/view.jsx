@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import FontAwesome from 'react-fontawesome';
+import axios from 'axios';
 
 import Editor from '../elements/Editor';
 import Btn from '../elements/btn';
@@ -10,6 +11,14 @@ export default class Oracule extends Component {
     title: '',
     description: ''
   };
+
+  componentDidMount() {
+    const { id } = this.props;
+
+    axios.get(`/api/oracle/${id}`).then(res => {
+      console.log(res.data);
+    });
+  }
 
   onTitleChange = e => {
     this.setState({ title: e.target.value });
