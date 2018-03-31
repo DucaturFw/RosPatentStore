@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import FontAwesome from 'react-fontawesome';
 import axios from 'axios';
-
-const NUMBER = 32;
 
 export default class Marketplace extends Component {
 
@@ -22,9 +21,17 @@ export default class Marketplace extends Component {
   get items() {
     return this.state.oracles.map((item, idx) => {
       return (
-        <Item key={idx} delay={idx}>
-          <Icon name="bitcoin" size="4x" />
-        </Item>
+        <StyleLink
+          key={idx}
+          to={`/oracle/${item.id}`}
+        >
+          <Item delay={idx}>
+            <SmallTitle>
+              {item.title}
+            </SmallTitle>
+            <Icon name="bitcoin" size="4x" />
+          </Item>
+        </StyleLink>
       );
     });
   }
@@ -35,7 +42,7 @@ export default class Marketplace extends Component {
         <Content>
           <Title>Oracles Marketplace</Title>
         </Content>
-        <List>{this.items}</List>;
+        <List>{this.items}</List>
       </div>
     );
   }
@@ -48,6 +55,7 @@ const List = styled.div`
   grid-template-columns: repeat(4, 1fr);
 `;
 const Item = styled.div`
+  position: relative;
   height: 150px;
   background-color: ${props => props.theme.color.background.gray};
   display: flex;
@@ -61,6 +69,7 @@ const Item = styled.div`
 `;
 const Icon = styled(FontAwesome) `
   color: ${props => props.theme.color.icons.main};
+  text-decoration: none;
 `;
 
 const Content = styled.div`
@@ -71,4 +80,22 @@ const Content = styled.div`
 
 const Title = styled.h1`
   font-size: 4rem;
+`;
+
+const SmallTitle = styled.h4`
+  position: absolute;
+  text-align: center;
+  font-size: 1.5rem;
+  color: inherit;
+  text-decoration: none;
+
+  top: 5px;
+  width: 100%;
+
+  z-index: 1;
+`;
+
+const StyleLink = styled(Link) `
+  text-decoration: none;
+  color: inherit;
 `;

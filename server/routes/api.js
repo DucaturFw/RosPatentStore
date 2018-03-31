@@ -1,4 +1,4 @@
-const NUMBER = 32;
+const db = require('../db');
 
 module.exports = server => {
   server.route({
@@ -33,12 +33,12 @@ module.exports = server => {
   server.route({
     method: 'GET',
     path: '/api/oracle',
-    handler: function (req, res) {
+    handler: async function (req, res) {
 
-      let arr = new Array(NUMBER).fill(0);
-      // TODO: get oracles
+      const data = await db.all()
+
       return {
-        oracles: arr
+        oracles: data
       };
     }
   });
