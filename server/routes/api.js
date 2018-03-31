@@ -4,15 +4,13 @@ module.exports = server => {
   server.route({
     method: 'GET',
     path: '/api/oracle/{id}',
-    handler: function (req, res) {
+    handler: async function (req, res) {
       const { id } = req.params;
-      const { payload } = req;
+      // const { payload } = req;
 
-      // TODO: get one oracle by id
-      return {
-        id,
-        oracle: payload
-      };
+      const data = await db.get(id)
+
+      return data;
     }
   });
 

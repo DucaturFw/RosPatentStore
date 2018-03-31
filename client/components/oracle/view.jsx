@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import FontAwesome from 'react-fontawesome';
+import ReactMarkdown from 'react-markdown';
 import axios from 'axios';
 
 import Editor from '../elements/Editor';
@@ -16,17 +17,12 @@ export default class Oracule extends Component {
     const { id } = this.props;
 
     axios.get(`/api/oracle/${id}`).then(res => {
-      console.log(res.data);
+      this.setState(state => ({
+        ...state,
+        ...res.data
+      }))
     });
   }
-
-  onTitleChange = e => {
-    this.setState({ title: e.target.value });
-  };
-
-  onEditChange = description => {
-    this.setState({ description });
-  };
 
   onSubmit = () => {
     const { title, description } = this.state;
@@ -38,11 +34,11 @@ export default class Oracule extends Component {
     return (
       <Content>
         <Title>Oracle: {id}</Title>
-        <Input onChange={this.onTitleChange} />
-        <Editor canEdit={false} onChange={this.onEditChange} />
-        <div>
+        <Header>{this.state.title}</Header>
+        <ReactMarkdown source={this.state.description} />
+        <Actions>
           <Btn title={'Join'} onClick={this.onSubmit} />
-        </div>
+        </Actions>
       </Content>
     );
   }
@@ -63,7 +59,7 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-const Input = styled.input`
+const Header = styled.div`
   box-sizing: border-box;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -73,4 +69,8 @@ const Input = styled.input`
   font-size: 1.5rem;
   width: 100%;
   border-radius: 4px;
+`;
+
+const Actions = styled.div`
+  margin-top: 50px;
 `;
