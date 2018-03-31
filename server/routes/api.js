@@ -17,13 +17,15 @@ module.exports = server => {
   server.route({
     method: 'POST',
     path: '/api/oracle',
-    handler: function (req, res) {
+    handler: async function (req, res) {
       const { payload } = req;
 
-      // TODO: create new oracle
+      const id = await db.create({
+        ...payload
+      });
+
       return {
-        id: 'new',
-        oracle: payload
+        id
       };
     }
   });

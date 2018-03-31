@@ -11,6 +11,11 @@ export default class Editor extends Component {
     });
   }
 
+  componentWillUnmount() {
+    this.simplemde.toTextArea();
+    this.simplemde = null;
+  }
+
   initMD({ element, initialValue }) {
     this.simplemde = new Simplemde({
       element,

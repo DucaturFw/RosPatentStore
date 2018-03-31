@@ -10,8 +10,8 @@ module.exports = {
         'INSERT INTO oracles (title, description) VALUES ($1, $2) RETURNING id',
         [title, description]
       )
-        .then(row => {
-          resolve(row.id)
+        .then(({ id }) => {
+          resolve(id)
         })
         .catch(err => {
           reject(err)

@@ -73,6 +73,7 @@ const Icon = styled(FontAwesome) `
 `;
 
 const Content = styled.div`
+position: relative;
   text-align: center;
   height: 100px;
   padding-top: 50px;

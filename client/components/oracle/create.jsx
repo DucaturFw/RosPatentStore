@@ -8,8 +8,10 @@ import Btn from '../elements/btn';
 
 export default class Oracule extends Component {
   state = {
+    id: null,
     title: '',
-    description: ''
+    description: '',
+    done: false,
   };
 
   onTitleChange = e => {
@@ -23,15 +25,26 @@ export default class Oracule extends Component {
   onSubmit = () => {
     const { title, description } = this.state;
 
-    // Do something with results
     axios.post('/api/oracle', {
       title, description
     }).then(res => {
-      console.log(res.data);
+      this.setState(state => ({
+        ...state,
+        ...res.data,
+        done: true,
+      }))
     });
   };
 
   render() {
+    if (this.state.done) {
+      return (
+        <Content>
+          <Title>Added pull oracles with id: {this.state.id}</Title>
+        </Content>
+      )
+    }
+
     return (
       <Content>
         <Title>Create new pull oracles</Title>

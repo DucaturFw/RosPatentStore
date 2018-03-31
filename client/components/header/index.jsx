@@ -19,8 +19,14 @@ export default class Header extends Component {
               </StyleLink>
             </Left>
             <Right>
-              <Signing>Sign in</Signing>
-              <FontAwesome name="sign-in" size="2x" />
+              <StyleLink
+                to={'/oracle/new'}
+              >
+                <AddOracle>
+                  <HoverIcon name="plus-circle" size="2x" />
+                  <Signing>Add pull oracles</Signing>
+                </AddOracle>
+              </StyleLink>
             </Right>
           </Inner>
         </Wrapper>
@@ -55,13 +61,29 @@ const Right = styled.div`
   margin-top: 13px;
 `;
 
+
 const Signing = styled.span`
   vertical-align: super;
-  margin-right: 10px;
+  margin-left: 10px;
 `;
 
-const StyleLink = styled(Link)`
+const StyleLink = styled(Link) `
   display: flex;
   text-decoration: none;
   color: inherit;
 `;
+
+
+const Icon = styled(FontAwesome) `
+  color: ${props => props.theme.color.icons.main};
+  text-decoration: none;
+`;
+const AddOracle = styled.div`
+  cursor: pointer;
+`;
+
+const HoverIcon = styled(Icon) `
+  &:hover {
+    color: ${props => props.theme.color.icons.dark};
+  }
+`
