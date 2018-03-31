@@ -1,21 +1,29 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 import './styles/styles.css';
 
+import Main from './components/elements/Main';
 import Header from './components/header';
-import Main from './components/main';
+import Marketplace from './components/marketplace';
+import Oracle from './components/oracle';
 import Footer from './components/footer';
 
 export default class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <Container>
-          <Header />
-          <Main />
-          <Footer />
-        </Container>
+        <Router>
+          <Container>
+            <Header />
+            <Main>
+              <Route exact path={'/'} component={Marketplace} />
+              <Route path={'/oracle/:id'} component={Oracle} />
+            </Main>
+            <Footer />
+          </Container>
+        </Router>
       </ThemeProvider>
     );
   }

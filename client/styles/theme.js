@@ -5,7 +5,11 @@ const Theme = {
       gray: '#f9f8f6'
     },
     icons: {
-      main: '#ddd'
+      main: '#ddd',
+      dark: '#999'
+    },
+    border: {
+      light: '#bbb'
     }
   }
 };

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import FontAwesome from 'react-fontawesome';
 
 import Logo from '../elements/logo';
 import Wrapper from '../elements/Wrapper';
@@ -14,38 +14,40 @@ export default class Footer extends Component {
             <Left>
               <List>
                 <Item>
-                  <Link>Marketplace</Link>
+                  <Linker>Marketplace</Linker>
                 </Item>
                 <Item>
-                  <Link>FAQs</Link>
+                  <Linker>FAQs</Linker>
                 </Item>
                 <Item>
-                  <Link>HELP</Link>
+                  <Linker>HELP</Linker>
                 </Item>
                 <Item>
-                  <Link>Support</Link>
+                  <Linker>Support</Linker>
                 </Item>
               </List>
               <List>
                 <Item>
-                  <Link>About</Link>
+                  <Linker>About</Linker>
                 </Item>
                 <Item>
-                  <Link>Press</Link>
+                  <Linker>Press</Linker>
                 </Item>
                 <Item>
-                  <Link>Tech details</Link>
+                  <Linker>Tech details</Linker>
                 </Item>
               </List>
             </Left>
             <Right>
-              <Logo />
-              <Title>Ducatur</Title>
+              <StyleLink to={'/'}>
+                <Logo />
+                <Title>Ducatur</Title>
+              </StyleLink>
             </Right>
           </Inner>
           <Politics>
-            <Link>Terms of use</Link>
-            <Link>Privacy policy</Link>
+            <Linker>Terms of use</Linker>
+            <Linker>Privacy policy</Linker>
           </Politics>
         </Wrapper>
       </Cont>
@@ -92,7 +94,7 @@ const Item = styled.li`
   font-size: 1.5rem;
   margin-top: 5px;
 `;
-const Link = styled.a`
+const Linker = styled.a`
   cursor: pointer;
   margin: 0 2.4rem;
 `;
@@ -101,4 +103,9 @@ const Politics = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 20px;
+`;
+
+const StyleLink = styled(Link) `
+  text-decoration: none;
+  color: inherit;
 `;

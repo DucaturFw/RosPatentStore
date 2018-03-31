@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import FontAwesome from 'react-fontawesome';
 
@@ -12,12 +13,20 @@ export default class Header extends Component {
         <Wrapper>
           <Inner>
             <Left>
-              <Logo />
-              <Title>Ducatur</Title>
+              <StyleLink to={'/'}>
+                <Logo />
+                <Title>Ducatur</Title>
+              </StyleLink>
             </Left>
             <Right>
-              <Signing>Sign in</Signing>
-              <FontAwesome name="sign-in" size="2x" />
+              <StyleLink
+                to={'/oracle/new'}
+              >
+                <AddOracle>
+                  <HoverIcon name="plus-circle" size="2x" />
+                  <Signing>Add pull oracles</Signing>
+                </AddOracle>
+              </StyleLink>
             </Right>
           </Inner>
         </Wrapper>
@@ -41,7 +50,8 @@ const Inner = styled.div`
 
 const Title = styled.h3`
   margin-left: 15px;
-  font-weight: 200;
+  margin-top: 14px;
+  font-weight: 400;
 `;
 
 const Left = styled.div`
@@ -51,7 +61,29 @@ const Right = styled.div`
   margin-top: 13px;
 `;
 
+
 const Signing = styled.span`
   vertical-align: super;
-  margin-right: 10px;
+  margin-left: 10px;
 `;
+
+const StyleLink = styled(Link) `
+  display: flex;
+  text-decoration: none;
+  color: inherit;
+`;
+
+
+const Icon = styled(FontAwesome) `
+  color: ${props => props.theme.color.icons.main};
+  text-decoration: none;
+`;
+const AddOracle = styled.div`
+  cursor: pointer;
+`;
+
+const HoverIcon = styled(Icon) `
+  &:hover {
+    color: ${props => props.theme.color.icons.dark};
+  }
+`
