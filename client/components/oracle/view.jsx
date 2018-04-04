@@ -7,6 +7,8 @@ import axios from 'axios';
 import Editor from '../elements/Editor';
 import Btn from '../elements/btn';
 
+import wallet from '../../models/wallet';
+
 export default class Oracule extends Component {
   state = {
     title: '',
@@ -20,12 +22,16 @@ export default class Oracule extends Component {
       this.setState(state => ({
         ...state,
         ...res.data
-      }))
+      }));
     });
   }
 
-  onSubmit = () => {
-    const { title, description } = this.state;
+  onJoin = () => {
+    wallet.join();
+  };
+
+  onBuy = () => {
+    const { title, description, email } = this.state;
   };
 
   render() {
@@ -35,9 +41,11 @@ export default class Oracule extends Component {
       <Content>
         <Title>Oracle: {id}</Title>
         <Header>{this.state.title}</Header>
+        <Header>{this.state.email}</Header>
         <ReactMarkdown source={this.state.description} />
         <Actions>
-          <Btn title={'Join'} onClick={this.onSubmit} />
+          <Btn title={'Join'} onClick={this.onJoin} />
+          <Btn title={'Buy'} onClick={this.onSubmit} />
         </Actions>
       </Content>
     );
@@ -73,4 +81,5 @@ const Header = styled.div`
 
 const Actions = styled.div`
   margin-top: 50px;
+  display: flex;
 `;

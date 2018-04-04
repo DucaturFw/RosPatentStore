@@ -11,11 +11,16 @@ export default class Oracule extends Component {
     id: null,
     title: '',
     description: '',
-    done: false,
+    email: '',
+    done: false
   };
 
   onTitleChange = e => {
     this.setState({ title: e.target.value });
+  };
+
+  onEmailChange = e => {
+    this.setState({ email: e.target.value });
   };
 
   onEditChange = description => {
@@ -23,17 +28,21 @@ export default class Oracule extends Component {
   };
 
   onSubmit = () => {
-    const { title, description } = this.state;
+    const { title, description, email } = this.state;
 
-    axios.post('/api/oracle', {
-      title, description
-    }).then(res => {
-      this.setState(state => ({
-        ...state,
-        ...res.data,
-        done: true,
-      }))
-    });
+    axios
+      .post('/api/oracle', {
+        title,
+        description,
+        email
+      })
+      .then(res => {
+        this.setState(state => ({
+          ...state,
+          ...res.data,
+          done: true
+        }));
+      });
   };
 
   render() {
@@ -42,13 +51,14 @@ export default class Oracule extends Component {
         <Content>
           <Title>Added pull oracles with id: {this.state.id}</Title>
         </Content>
-      )
+      );
     }
 
     return (
       <Content>
         <Title>Create new pull oracles</Title>
-        <Input onChange={this.onTitleChange} />
+        <Input onChange={this.onTitleChange} placeholder="Title" />
+        <Input onChange={this.onEmailChange} placeholder="Email" />
         <Editor canEdit={false} onChange={this.onEditChange} />
         <div>
           <Btn title={'Create'} onClick={this.onSubmit} />
