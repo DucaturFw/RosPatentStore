@@ -7,7 +7,7 @@ const url = require('url');
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
-const envPublicUrl = process.env.PUBLIC_URL || 'http://localhost:3000';
+const envPublicUrl = process.env.PUBLIC_URL;
 
 function ensureSlash(path, needsSlash) {
   const hasSlash = path.endsWith('/');
