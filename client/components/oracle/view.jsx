@@ -27,7 +27,7 @@ export default class Oracule extends Component {
   }
 
   onJoin = () => {
-    wallet.join();
+    wallet.send(0.1);
   };
 
   onBuy = () => {

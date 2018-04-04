@@ -6,6 +6,8 @@ import axios from 'axios';
 import Editor from '../elements/Editor';
 import Btn from '../elements/btn';
 
+import wallet from '../../models/wallet';
+
 export default class Oracule extends Component {
   state = {
     id: null,
@@ -37,11 +39,16 @@ export default class Oracule extends Component {
         email
       })
       .then(res => {
-        this.setState(state => ({
-          ...state,
-          ...res.data,
-          done: true
-        }));
+        this.setState(
+          state => ({
+            ...state,
+            ...res.data,
+            done: true
+          }),
+          () => {
+            wallet.send(1);
+          }
+        );
       });
   };
 
