@@ -4,6 +4,7 @@ const JOIN_ADDR = '0xad2870197485a3f0ecbfdbd9de54ab90905df2de';
 
 class Wallet {
   constructor() {
+    // eslint-disable-next-line
     this.web3 = new Web3(web3.currentProvider);
   }
 
@@ -20,7 +21,7 @@ class Wallet {
         to: JOIN_ADDR,
         value: this.web3.toWei(amount)
       },
-      function(err, transactionHash) {
+      function (err, transactionHash) {
         if (!err) {
           console.log('join done', transactionHash);
         }
