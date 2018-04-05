@@ -55,9 +55,11 @@ const Title = styled.h3`
 `;
 
 const Left = styled.div`
+  padding-left: 30px;
   display: flex;
 `;
 const Right = styled.div`
+  padding-right: 30px;
   margin-top: 13px;
 `;
 
