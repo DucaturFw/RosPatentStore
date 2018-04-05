@@ -135,11 +135,11 @@ const Popover = styled.div`
   bottom: 0;
   left: ${props => props.show ? 0 : '100%'};
   right: 0;
-background: white;
-display: block;
+  background: white;
+  display: block;
 `;
 
 const IDE = styled.iframe`
-width: 100%;
-height: 100%;
+  width: 100%;
+  height: 100%;
 `;

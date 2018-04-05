@@ -17,7 +17,7 @@ module.exports = server => {
     path: '/browser-solidity/{param*}',
     handler: {
       directory: {
-        path: path.resolve(__dirname, '../../build/remix'),
+        path: path.resolve(__dirname, '../../build/browser-solidity'),
         listing: true
       }
     }
