@@ -14,6 +14,17 @@ module.exports = server => {
 
   server.route({
     method: 'GET',
+    path: '/remix/{param*}',
+    handler: {
+      directory: {
+        path: path.resolve(__dirname, '../../build/remix'),
+        listing: true
+      }
+    }
+  });
+
+  server.route({
+    method: 'GET',
     path: '/{param*}',
     handler: function (req, h) {
       return h.view('index');

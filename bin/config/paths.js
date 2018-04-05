@@ -7,7 +7,6 @@ const url = require('url');
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
-const envPublicUrl = process.env.PUBLIC_URL || 'http://localhost:3000';
 
 function ensureSlash(path, needsSlash) {
   const hasSlash = path.endsWith('/');
@@ -20,7 +19,9 @@ function ensureSlash(path, needsSlash) {
   }
 }
 
-const getPublicUrl = appPackageJson => envPublicUrl || require(appPackageJson).homepage;
+const envPublicUrl = process.env.PUBLIC_URL;
+// const getPublicUrl = appPackageJson => envPublicUrl || require(appPackageJson).homepage;
+const getPublicUrl = appPackageJson => '';
 
 function getServedPath(appPackageJson) {
   const publicUrl = getPublicUrl(appPackageJson);
