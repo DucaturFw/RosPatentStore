@@ -33,10 +33,7 @@ export default class Oracule extends Component {
     });
 
     axios.get(CONTRACT_URL).then(res => {
-      this.setState(state => ({
-        ...state,
-        contract: res.data
-      }));
+      this.setCode(res.data);
     })
   }
 
@@ -49,6 +46,7 @@ export default class Oracule extends Component {
       ...state,
       showContrcat: true
     }));
+    document.getElementById('remix').contentWindow.location.reload();
   };
 
   setCode(code) {
@@ -57,8 +55,6 @@ export default class Oracule extends Component {
 
     window.localStorage.setItem(`sol:${filename}`, code);
     window.localStorage.setItem('sol:.remix.config', config);
-
-    document.getElementById('remix').contentWindow.location.reload();
   }
 
   render() {
@@ -91,7 +87,7 @@ export default class Oracule extends Component {
         <Popover show={this.state.showContrcat}>
           <IDE
             id="remix"
-            src={'/remix/'}
+            src={'/remix/#version=soljson-v0.4.18+commit.9cf6e910.js'}
           />
         </Popover>
       </Content>
