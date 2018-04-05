@@ -87,7 +87,7 @@ export default class Oracule extends Component {
         <Popover show={this.state.showContrcat}>
           <IDE
             id="remix"
-            src={'/remix/#version=soljson-v0.4.18+commit.9cf6e910.js'}
+            src={'/browser-solidity/#version=soljson-v0.4.18+commit.9cf6e910.js'}
           />
         </Popover>
       </Content>
@@ -129,16 +129,17 @@ const Actions = styled.div`
 `;
 
 const Popover = styled.div`
-  position: fixed;
+  position: ${props => props.show ? 'fixed' : 'absolute'};
+  z-index: ${props => props.show ? 10 : -10};
   top: 80px;
   bottom: 0;
-  left: 0;
+  left: ${props => props.show ? 0 : '100%'};
   right: 0;
-  background: white;
-  display: ${props => props.show ? 'block' : 'none'};
+background: white;
+display: block;
 `;
 
 const IDE = styled.iframe`
-  width: 100%;
-  height: 100%;
+width: 100%;
+height: 100%;
 `;

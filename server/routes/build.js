@@ -14,7 +14,7 @@ module.exports = server => {
 
   server.route({
     method: 'GET',
-    path: '/remix/{param*}',
+    path: '/browser-solidity/{param*}',
     handler: {
       directory: {
         path: path.resolve(__dirname, '../../build/remix'),
