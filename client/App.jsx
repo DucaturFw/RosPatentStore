@@ -6,7 +6,7 @@ import './styles/styles.css';
 
 import Main from './components/elements/Main';
 import Header from './components/header';
-import Marketplace from './components/marketplace';
+import Ledger from './components/ledger';
 import Oracle from './components/oracle';
 import Footer from './components/footer';
 
@@ -18,7 +18,7 @@ export default class App extends Component {
           <Container>
             <Header />
             <Main>
-              <Route exact path={'/'} component={Marketplace} />
+              <Route exact path={'/'} component={Ledger} />
               <Route path={'/oracle/:id'} component={Oracle} />
             </Main>
             <Footer />

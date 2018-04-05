@@ -17,7 +17,8 @@ export default class Oracule extends Component {
     description: '',
     email: '',
     contract: '',
-    showContrcat: false
+    showContrcat: false,
+    isLoaded: false,
   };
 
   componentDidMount() {
@@ -26,6 +27,7 @@ export default class Oracule extends Component {
     axios.get(`/api/oracle/${id}`).then(res => {
       this.setState(state => ({
         ...state,
+        isLoaded: true,
         ...res.data
       }));
     });
@@ -50,8 +52,10 @@ export default class Oracule extends Component {
   };
 
   setCode(code) {
-    let config = '{"left-offset":205,"right-offset":252,"terminal-top-offset":694,"currentFile":"browser/custom.sol","autoCompile":false}';
-    window.localStorage.setItem('sol:custom.sol', code);
+    const filename = 'custom.sol';
+    const config = `{"left-offset":205,"right-offset":252,"terminal-top-offset":694,"currentFile":"browser/${filename}","autoCompile":false}`;
+
+    window.localStorage.setItem(`sol:${filename}`, code);
     window.localStorage.setItem('sol:.remix.config', config);
 
     document.getElementById('remix').contentWindow.location.reload();
@@ -59,6 +63,20 @@ export default class Oracule extends Component {
 
   render() {
     const { id } = this.props;
+
+    if (!this.state.isLoaded) {
+      return (
+        <Content>
+          <Title>
+            <Icon
+              name={'spinner'}
+              size={'4x'}
+              spin
+            />
+          </Title>
+        </Content>
+      )
+    }
 
     return (
       <Content>
@@ -81,8 +99,9 @@ export default class Oracule extends Component {
   }
 }
 
-const Cont = styled.div`
-  flex-grow: 1;
+
+const Icon = styled(FontAwesome) `
+  color: ${props => props.theme.color.background.main};
 `;
 
 const Content = styled.div`

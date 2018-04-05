@@ -14,7 +14,7 @@ export default class Footer extends Component {
             <Left>
               <List>
                 <Item>
-                  <Linker>Marketplace</Linker>
+                  <Linker>Ledger</Linker>
                 </Item>
                 <Item>
                   <Linker>FAQs</Linker>

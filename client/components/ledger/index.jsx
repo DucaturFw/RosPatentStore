@@ -40,7 +40,7 @@ export default class Marketplace extends Component {
     return (
       <div>
         <Content>
-          <Title>Oracles Marketplace</Title>
+          <Title>Oracles Ledger</Title>
         </Content>
         <List>{this.items}</List>
       </div>

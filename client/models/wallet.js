@@ -14,19 +14,26 @@ class Wallet {
     }
   }
 
+  hasAddr() {
+    return !!this.getAddr();
+  }
+
   send(amount) {
-    this.web3.eth.sendTransaction(
-      {
-        from: this.getAddr(),
-        to: JOIN_ADDR,
-        value: this.web3.toWei(amount)
-      },
-      function (err, transactionHash) {
-        if (!err) {
-          console.log('join done', transactionHash);
+    let tx = {
+      from: this.getAddr(),
+      to: JOIN_ADDR,
+      value: this.web3.toWei(amount)
+    }
+
+    if (this.hasAddr()) {
+      this.web3.eth.sendTransaction(tx,
+        function (err, transactionHash) {
+          if (!err) {
+            console.log('join done', transactionHash);
+          }
         }
-      }
-    );
+      );
+    }
   }
 }
 
