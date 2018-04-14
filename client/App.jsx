@@ -19,7 +19,7 @@ export default class App extends Component {
             <Header />
             <Main>
               <Route exact path={'/'} component={Ledger} />
-              <Route path={'/oracle/:id'} component={Oracle} />
+              <Route path={'/patent/:id'} component={Oracle} />
             </Main>
             <Footer />
           </Container>

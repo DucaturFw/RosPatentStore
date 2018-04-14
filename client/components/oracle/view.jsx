@@ -28,7 +28,7 @@ export default class Oracule extends Component {
       this.setState(state => ({
         ...state,
         isLoaded: true,
-        ...res.data
+        ...res.data,
       }));
     });
 
@@ -76,13 +76,15 @@ export default class Oracule extends Component {
 
     return (
       <Content>
-        <Title>Oracle: {id}</Title>
-        <Header>{this.state.title}</Header>
-        <Header>{this.state.email}</Header>
-        <ReactMarkdown source={this.state.description} />
+        <Title>ПАТЕНТ №{id}</Title>
+        <Title>{this.state.title}</Title>
         <Actions>
-          <Btn title={'Join'} onClick={this.onJoin} />
-          <Btn title={'Buy'} onClick={this.onBuy} />
+          <Btn title={'ОТПРАВИТЬ ЗАЯВКУ В РОСПАТЕНТ'} onClick={this.onBuy} style={{width: '400px'}}/>
+        </Actions>
+        <Description dangerouslySetInnerHTML={{__html: this.state.description}}></Description>
+        <ReactMarkdown />
+        <Actions>
+          <Btn title={'ОТПРАВИТЬ ЗАЯВКУ В РОСПАТЕНТ'} onClick={this.onBuy} style={{width: '400px'}}/>
         </Actions>
         <Popover show={this.state.showContrcat}>
           <IDE
@@ -103,6 +105,8 @@ const Icon = styled(FontAwesome) `
 const Content = styled.div`
   padding-top: 20px;
   box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 88rem;
 `;
 
 const Title = styled.h1`
@@ -142,4 +146,9 @@ const Popover = styled.div`
 const IDE = styled.iframe`
   width: 100%;
   height: 100%;
+`;
+
+const Description = styled.div`
+  margin-top: 40px;
+  text-indent: 5mm;
 `;
