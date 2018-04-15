@@ -96,7 +96,7 @@ export default class Oracule extends Component {
         {/* <select>
           <option>Huy</option>
         </select> */}
-        <Input onChange={this.onChange} name="date" placeholder="Срок предоставления права использования" />
+        <Input onChange={this.onChange} name="exp_date" placeholder="Срок предоставления права использования" />
         <label htmlFor="resaleCheckbox"><Input id="resaleCheckbox" type="checkbox" defaultChecked={this.state.chkbox} name="resale" onChange={this.onCheckbox} />Переход исключительного права</label>
         <Title style={{ textAlign: 'left', }}>Дополнительные условия использования:</Title>
         <Editor canEdit={false} onChange={this.onEditChange} />
