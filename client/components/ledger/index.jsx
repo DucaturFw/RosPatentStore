@@ -59,8 +59,7 @@ const List = styled.div`
 const Item = styled.div`
   position: relative;
   height: 150px;
-  background-color: ${props => props.theme.color.background.gray};
-  display: flex;
+  background-color: ${props => props.theme.color.background.gray};  
   justify-content: center;
   align-items: center;
 
@@ -71,7 +70,8 @@ const Item = styled.div`
   
   grid-template-columns: 10px auto 10px;
   grid-template-rows: 20px auto 10px;
-  
+
+  padding: 1px;  
   padding-left: 10px;
   padding-right: 10px;
 `;
@@ -92,20 +92,16 @@ const Title = styled.h1`
 `;
 
 const PatentNumber = styled.h4`
-  /* position: absolute; */
+  margin-top: 10px;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: inherit;
   text-decoration: none;
 
-  top: 10px;
-  /* width: 100%; */
-
-  z-index: 1;
 `;
-const SmallTitle = styled(PatentNumber)`
-  top: auto;
-  /* bottom: 5px; */
+const SmallTitle = styled.div`
+  margin-top: 10px;
+  text-align: center;
 `
 
 const StyleLink = styled(Link) `
