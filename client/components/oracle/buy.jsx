@@ -64,8 +64,8 @@ export default class Oracule extends Component {
       data: {
         pat_id: `${this.state.id}`,
         region: `${this.state.region}`,
-        exp_date: this.state.exp_date,
-        resale: this.state.resale,
+        exp_date: `${this.state.exp_date}`,
+        resale: `${this.state.resale}`,
         terms: `${this.state.terms}`
       },
       text: {
@@ -97,7 +97,7 @@ export default class Oracule extends Component {
           <option>Huy</option>
         </select> */}
         <Input onChange={this.onChange} name="date" placeholder="Срок предоставления права использования" />
-        <Input type="checkbox" defaultChecked={this.state.chkbox} name="resale" onChange={this.onCheckbox} />
+        <label htmlFor="resaleCheckbox"><Input id="resaleCheckbox" type="checkbox" defaultChecked={this.state.chkbox} name="resale" onChange={this.onCheckbox} />Переход исключительного права</label>
         <Title style={{ textAlign: 'left', }}>Дополнительные условия использования:</Title>
         <Editor canEdit={false} onChange={this.onEditChange} />
         <div>

@@ -24,7 +24,7 @@ export default class Header extends Component {
               >
                 <AddOracle>
                   <HoverIcon name="plus-circle" size="2x" />
-                  <Signing>Add pull oracles</Signing>
+                  <Signing>Подать заявку на патент</Signing>
                 </AddOracle>
               </StyleLink>
             </Right>

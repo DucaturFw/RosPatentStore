@@ -17,39 +17,28 @@ export default class Oracule extends Component {
     done: false
   };
 
-  onTitleChange = e => {
-    this.setState({ title: e.target.value });
-  };
-
-  onEmailChange = e => {
-    this.setState({ email: e.target.value });
-  };
-
   onEditChange = description => {
     this.setState({ description });
   };
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
   onSubmit = () => {
-    const { title, description, email } = this.state;
-
-    axios
-      .post('/api/oracle', {
-        title,
-        description,
-        email
-      })
-      .then(res => {
-        this.setState(
-          state => ({
-            ...state,
-            ...res.data,
-            done: true
-          }),
-          () => {
-            wallet.send(1);
-          }
-        );
-      });
+    window.aplaEvo.sendTransaction({
+      name: 'add_full_patent',
+      data: {
+        name: `${this.state.title}`,
+        description: `${this.state.description}`,
+        additional: `${this.state.additional}`,
+        patent_date: `${Date.now() + 86400 * 365}`,
+        expiration_date: `${Date.now() + 86400 * 365 * 2}`
+      },
+      text: {
+        title: "Заявка на регистрацию",
+        description: `${this.state.title}`
+      }
+    });
   };
 
   render() {
@@ -63,12 +52,15 @@ export default class Oracule extends Component {
 
     return (
       <Content>
-        <Title>Create new pull oracles</Title>
-        <Input onChange={this.onTitleChange} placeholder="Title" />
-        <Input onChange={this.onEmailChange} placeholder="Email" />
+        <Title>Заявка на регистрацию прав на изобретение</Title>
+        <Input onChange={this.onChange} name="title" placeholder="Название" />
+        {/* <select>
+          <option>Huy</option>
+        </select> */}
+        <Title style={{ textAlign: 'left', }}>Описание изобретения:</Title>
         <Editor canEdit={false} onChange={this.onEditChange} />
         <div>
-          <Btn title={'Create'} onClick={this.onSubmit} />
+          <Btn title={'Отправить'} onClick={this.onSubmit} />
         </div>
       </Content>
     );
