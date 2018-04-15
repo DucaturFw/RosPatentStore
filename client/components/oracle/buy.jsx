@@ -60,16 +60,23 @@ export default class Oracule extends Component {
 
   onSubmit = () => {
     window.aplaEvo.sendTransaction({
-      name: 'add_patent',
+      name: 'init_sale',
       data: {
-        pat_num: 'Check 1',
-        description: 'check 2'
+        pat_id: `${this.state.id}`,
+        region: `${this.state.region}`,
+        exp_date: this.state.exp_date,
+        resale: this.state.resale,
+        terms: `${this.state.terms}`
       },
       text: {
-        title: "Добавить патент",
-        description: "Простой патент"
+        title: "Отправить заявку",
+        description: `Патент №${this.state.id}: ${this.state.patent.title}`
       }
     });
+  };
+  
+  onCheckbox = e => {
+    this.setState({ resale: e.target.checked })
   };
 
   render() {
@@ -90,6 +97,7 @@ export default class Oracule extends Component {
           <option>Huy</option>
         </select> */}
         <Input onChange={this.onChange} name="date" placeholder="Срок предоставления права использования" />
+        <Input type="checkbox" defaultChecked={this.state.chkbox} name="resale" onChange={this.onCheckbox} />
         <Title style={{ textAlign: 'left', }}>Дополнительные условия использования:</Title>
         <Editor canEdit={false} onChange={this.onEditChange} />
         <div>
